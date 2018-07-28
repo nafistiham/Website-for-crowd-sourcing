@@ -11,7 +11,7 @@
                 <h4>{{ $s->sentence }}</h4>
 
 
-                <form action="/crowdinput" method="POST">
+                <form action= "{{ url('/crowdinput') }}" method="POST">
                 	{{csrf_field()}}
                 		<input type="hidden" name="id" value="{{$s->id}}">
   						<input type="radio" name="type" value="positive" required> Positive <br>
