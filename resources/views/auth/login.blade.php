@@ -59,7 +59,7 @@
                                 <br>
                                 <br>
 
-                                 <img src="login.png" alt="login" style="width:250px;height:100px align = "middle";>
+                                 
 
                             </div>
                         </div>
