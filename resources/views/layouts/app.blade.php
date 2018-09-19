@@ -53,7 +53,9 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    @if (Auth::guest())
+                    <li><a href="{{ url('/hourly-leaderboard') }}">Hourly Leaderboard</a></li>
+
+                @if (Auth::guest())
                         <li><a href="{{ url('/leaderboard') }}">Leaderboard</a></li>
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
@@ -73,7 +75,13 @@
             </div>
         </div>
     </nav>
-
+    <marquee behavior="" direction="left" class="text-lg text-success">
+        Top contributor for this hour is:
+        @php
+        $past = json_decode(\App\PastInfo::orderBy('created_at', 'DESC')->first()->data, true);
+        echo '<strong>' . $past[0]['name'] . '</strong>';
+        @endphp
+    </marquee>
     @yield('content')
 
     <!-- JavaScripts -->
