@@ -15,8 +15,8 @@ class CalculateHourlyWinnerController extends Controller
     public function index()
     {
         $users = User::select(['name', 'email', 'tagged', 'hourly_tag'])
-            ->orderBy('hourly_tag', 'DES')
             ->orderBy('tagged', 'DES')
+            ->orderBy('hourly_tag', 'DES')
             ->get()
             ->take(3);
         $past = new PastInfo();
