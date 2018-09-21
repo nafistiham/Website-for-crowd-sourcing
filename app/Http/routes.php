@@ -16,9 +16,18 @@ use Illuminate\Support\Facades\Input as In;
 
 Route::get('/', function () {
     $sentences = Sentence::all();
-    $ran = rand(0, sizeof($sentences) - 1);
-    return view('crowdinput')
-        ->with('s', $sentences[$ran]);
+    while(1)
+    {
+        $ran = rand(0, sizeof($sentences) - 1);
+        $total = $sentences[$ran]['total_positive'] 
+            + $sentences[$ran]['total_negative']
+            + $sentences[$ran]['nutral']);
+        if($total < 20 )
+        {
+            return view('crowdinput')
+                ->with('s', $sentences[$ran]);
+        }
+    }
 });
 
 Route::get('/leaderboard', function () {
