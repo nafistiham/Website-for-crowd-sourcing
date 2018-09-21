@@ -21,7 +21,7 @@ Route::get('/', function () {
         $ran = rand(0, sizeof($sentences) - 1);
         $total = $sentences[$ran]['total_positive'] 
             + $sentences[$ran]['total_negative']
-            + $sentences[$ran]['nutral']);
+            + $sentences[$ran]['nutral'];
         if($total < 20 )
         {
             return view('crowdinput')
